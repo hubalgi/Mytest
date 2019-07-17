@@ -18,14 +18,9 @@ pipeline {
             sh 'whoami'
           }
         }
-        stage('move to dir') {
-          steps {
-            sh 'cd /root/docker-space'
-          }
-        }
         stage('run doc file') {
           steps {
-            sh 'docker build -t microserviceimage /root/docker-space/ .'
+            sh 'docker build -t microserviceimage /root/docker-space/.'
           }
         }
       }
