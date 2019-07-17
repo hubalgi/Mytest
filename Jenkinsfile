@@ -13,12 +13,11 @@ pipeline {
     }
     stage('build a docker image from artifacr') {
       steps {
-        sh 
-       ' cd /root/docker-space '
+         
+       sh ' cd /root/docker-space '
       }
       steps {
-        sh 
-       ' pwd '
+        sh ' pwd '
       }
         
   
