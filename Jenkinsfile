@@ -13,7 +13,7 @@ pipeline {
     }
     stage('build docker image') {
       steps {
-        sh 'sudo cd /root/docker-space'
+        sh 'cd /root/docker-space'
         sh 'docker build -t microserviceimage /root/docker-space/.'
       }
     }
