@@ -17,7 +17,7 @@ pipeline {
           steps {
             sh 'whoami'
             sh '''
-                    echo "Multiline shell steps works too"
+                    echo "Multiline shell steps works toxo"
                     pwd
                     cd 
                     pwd
