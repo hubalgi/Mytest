@@ -15,7 +15,7 @@ pipeline {
       parallel {
         stage('build image') {
           steps {
-            sh 'sudo -i'
+            sh 'whoami'
           }
         }
         stage('move to dir') {
