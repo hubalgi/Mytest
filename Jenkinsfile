@@ -11,5 +11,10 @@ pipeline {
         sh 'sudo cp /var/lib/jenkins/workspace/myfirstmaven/demo/target/student-services-0.0.1-SNAPSHOT.jar /root/docker-space/ '
       }
     }
+    stage('build a docker image from artifacr') {
+      steps {
+        sh 'sudo docker build -t microserviceimage .'
+      }
+    }
   }
 }
