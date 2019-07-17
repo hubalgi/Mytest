@@ -6,5 +6,10 @@ pipeline {
         sh 'mvn clean install'
       }
     }
+    stage('copy the artifact to docker space') {
+      steps {
+        sh 'cp /var/lib/jenkins/workspace/myfirstmaven/demo/target/student-services-0.0.1-SNAPSHOT.jar /root/docker-space/ '
+      }
+    }
   }
 }
