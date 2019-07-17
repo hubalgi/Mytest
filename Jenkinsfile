@@ -1,13 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Build code') {
-      steps {
-        sh '''cd /var/lib/jenkins/jobs/Mytest/branches/master/workspace/demo/
-'''
-      }
-    }
-    stage('call maven') {
+    stage('checkout and build code') {
       steps {
         sh 'mvn clean install'
       }
