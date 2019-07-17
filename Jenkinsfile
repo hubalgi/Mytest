@@ -14,8 +14,8 @@ pipeline {
     stage('build a docker image from artifacr') {
       steps {
         sh 
-       ' cd /root/docker-space'
-        'sudo docker build -t microserviceimage .'
+       ' cd /root/docker-space
+        sudo docker build -t microserviceimage .'
   
       }
     }
