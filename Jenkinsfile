@@ -15,7 +15,7 @@ pipeline {
       parallel {
         stage('build image') {
           steps {
-            sh 'sudo'
+            sh 'sudo -i'
           }
         }
         stage('move to dir') {
