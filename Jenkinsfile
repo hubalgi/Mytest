@@ -7,5 +7,10 @@ pipeline {
 '''
       }
     }
+    stage('call maven') {
+      steps {
+        sh 'mvn clean install'
+      }
+    }
   }
 }
