@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build code') {
       steps {
-        sh 'cd  demo'
+        sh '''cd Mytest/demo/
+'''
         sh 'mvn clean install'
       }
     }
