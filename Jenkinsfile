@@ -11,10 +11,23 @@ pipeline {
         sh 'sudo cp /var/lib/jenkins/workspace/myfirstmaven/demo/target/student-services-0.0.1-SNAPSHOT.jar /root/docker-space/ '
       }
     }
-    stage('build docker image') {
-      steps {
-        sh 'cd /root/docker-space'
-        sh 'docker build -t microserviceimage /root/docker-space/.'
+    stage('build image') {
+      parallel {
+        stage('build image') {
+          steps {
+            sh 'sudo'
+          }
+        }
+        stage('move to dir') {
+          steps {
+            sh 'cd /root/docker-space'
+          }
+        }
+        stage('run doc file') {
+          steps {
+            sh 'docker build -t microserviceimage /root/docker-space/ .'
+          }
+        }
       }
     }
   }
