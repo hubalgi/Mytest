@@ -1,10 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Build code') {
       steps {
-        sh 'mvn clean '
-        sh 'cd demo'
+        sh 'cd  demo'
       }
     }
   }
