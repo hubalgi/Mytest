@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: student-services
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: hemant_balgi
+Implementation-Vendor-Id: com.in28minutes.springboot
+Build-Jdk: 1.8.0_66
+Implementation-URL: http://projects.spring.io/spring-boot/student-serv
+ ices/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
