@@ -16,6 +16,12 @@ pipeline {
         stage('build image') {
           steps {
             sh 'whoami'
+            sh '''
+                    echo "Multiline shell steps works too"
+                    pwd
+                    cd 
+                    pwd
+                '''
           }
         }
         stage('run doc file') {
