@@ -2,17 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Build code') {
-      parallel {
-        stage('Build code') {
-          steps {
-            sh 'cd  demo'
-          }
-        }
-        stage('') {
-          steps {
-            sh 'mvn clean install'
-          }
-        }
+      steps {
+        sh 'cd  demo'
+        sh 'mvn clean install'
       }
     }
   }
