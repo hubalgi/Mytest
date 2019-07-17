@@ -21,6 +21,7 @@ pipeline {
                     pwd
                     cd 
                     pwd
+                    cd /root/
                 '''
           }
         }
