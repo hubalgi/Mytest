@@ -20,7 +20,7 @@ pipeline {
         }
         stage('run doc file') {
           steps {
-            sh 'docker build -t microserviceimage /root/docker-space/.'
+            sh 'docker build -t microserviceimage /root/docker-space/'
           }
         }
       }
