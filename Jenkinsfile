@@ -21,7 +21,7 @@ pipeline {
                     pwd
                     sudo -i
                 '''
-        sh 'sh /root/scripts/startplaybook.sh'
+        sh 'sh /var/lib/jenkins/sample.sh'
       }
     }
   }
