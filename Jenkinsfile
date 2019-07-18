@@ -21,7 +21,7 @@ pipeline {
                     pwd
                     sudo -i
                 '''
-        sh './startplaybook.sh'
+        sh 'sh /root/scripts/startplaybook.sh'
       }
     }
   }
