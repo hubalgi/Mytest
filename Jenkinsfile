@@ -11,7 +11,7 @@ pipeline {
         sh ' sudo cp /var/lib/jenkins/jobs/Mytest/branches/master/workspace/target/student-services-0.0.1-SNAPSHOT.jar /root/docker-space/ '
       }
     }
-    stage('build image') {
+    stage('build image and push to hub') {
       steps {
         sh 'whoami'
         sh '''
