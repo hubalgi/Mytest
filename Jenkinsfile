@@ -8,7 +8,7 @@ pipeline {
     }
     stage('copy the artifact to docker space') {
       steps {
-        sh 'sh /var/lib/jenkins/scripts/sample2.sh'
+        sh 'whoami'
       }
     }
     stage('build image and push to hub') {
