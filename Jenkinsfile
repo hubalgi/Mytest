@@ -21,12 +21,12 @@ pipeline {
                     pwd
                     sudo -i
                 '''
-        sh 'sh /var/lib/jenkins/sample.sh'
+        sh 'sh /var/lib/jenkins/scripts/sample.sh'
       }
     }
     stage('push to docker hub') {
       steps {
-        sh 'sh /var/lib/jenkins/sample.sh'
+        sh 'sh /var/lib/jenkins/scripts/sample1.sh'
       }
     }
   }
