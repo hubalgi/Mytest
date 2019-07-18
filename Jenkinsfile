@@ -14,13 +14,6 @@ pipeline {
     stage('build image and push to hub') {
       steps {
         sh 'whoami'
-        sh '''
-                    echo "Multiline shell steps works toxob"
-                    pwd
-                    cd 
-                    pwd
-                    sudo -i
-                '''
         sh 'sh /var/lib/jenkins/scripts/sample.sh'
       }
     }
