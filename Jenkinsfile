@@ -14,7 +14,7 @@ pipeline {
     stage('build image and push to hub') {
       steps {
         sh 'whoami'
-        sh 'sudo sh /var/lib/jenkins/scripts/sample.sh'
+        sh 'sh /var/lib/jenkins/scripts/sample.sh'
       }
     }
     stage('Deploy into dev') {
