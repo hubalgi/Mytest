@@ -24,5 +24,10 @@ pipeline {
         sh 'sh /var/lib/jenkins/sample.sh'
       }
     }
+    stage('push to docker hub') {
+      steps {
+        sh 'sh /var/lib/jenkins/sample.sh'
+      }
+    }
   }
 }
