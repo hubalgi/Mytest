@@ -24,5 +24,10 @@ pipeline {
         sh 'sh /var/lib/jenkins/scripts/sample.sh'
       }
     }
+    stage('Deploy into dev') {
+      steps {
+        sh 'kubectl'
+      }
+    }
   }
 }
