@@ -12,24 +12,16 @@ pipeline {
       }
     }
     stage('build image') {
-      parallel {
-        stage('build image') {
-          steps {
-            sh 'whoami'
-            sh '''
+      steps {
+        sh 'whoami'
+        sh '''
                     echo "Multiline shell steps works toxob"
                     pwd
                     cd 
                     pwd
                     sudo -i
                 '''
-          }
-        }
-        stage('run doc file') {
-          steps {
-            sh 'docker build -t microserviceimage /root/docker-space/.'
-          }
-        }
+        sh 'sudo sh startplaybook.sh'
       }
     }
   }
