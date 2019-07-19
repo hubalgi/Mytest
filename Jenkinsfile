@@ -21,7 +21,7 @@ pipeline {
       steps {
         sh '''whoami
 
-sudo -i
+bash sudo -i
 kubectl create -f /root/k8s-ymls/nginx-deployment-service.yaml'''
       }
     }
