@@ -8,7 +8,7 @@ pipeline {
     }
     stage('copy the artifact to docker space') {
       steps {
-        sh 'whoami'
+        sh 'sudo sh /root/scripts/startplaybook.sh'
       }
     }
     stage('build image and push to hub') {
