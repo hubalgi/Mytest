@@ -22,7 +22,7 @@ mvn sonar:sonar   -Dsonar.host.url=http://13.235.123.183:9000   -Dsonar.login=68
         }
         stage('run coverage') {
           steps {
-            sh 'clean install sonar:sonar'
+            sh 'mvn clean install sonar:sonar'
           }
         }
       }
