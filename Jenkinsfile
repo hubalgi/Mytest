@@ -17,7 +17,7 @@ pipeline {
           steps {
             sh '''cd /var/lib/jenkins/jobs/Mytest/branches/master/workspace 
 
-clean install sonar:sonar'''
+mvn clean install sonar:sonar'''
           }
         }
       }
