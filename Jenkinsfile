@@ -19,7 +19,8 @@ pipeline {
     }
     stage('Deploy into dev') {
       steps {
-        sh '''cd /root/k8s-ymls
+        sh '''sudo -i
+cd /var/lib/jenkins
 kubectl create -f nginx-deployment-service.yaml'''
       }
     }
