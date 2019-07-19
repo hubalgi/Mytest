@@ -19,10 +19,7 @@ pipeline {
     }
     stage('Deploy into dev') {
       steps {
-        sh '''whoami
-
-bash sudo -i
-kubectl create -f /root/k8s-ymls/nginx-deployment-service.yaml'''
+        sh 'kubectl create -f /root/k8s-ymls/nginx-deployment-service.yaml'
       }
     }
   }
