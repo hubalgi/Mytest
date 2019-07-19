@@ -3,23 +3,12 @@ pipeline {
   stages {
     stage('checkout and build code') {
       steps {
-        sh 'mvn clean install'
+        sh 'mvn clean install sonar:sonar'
       }
     }
     stage('copy the artifact to docker space') {
-      parallel {
-        stage('copy the artifact to docker space') {
-          steps {
-            sh 'sudo cp /var/lib/jenkins/jobs/Mytest/branches/master/workspace/target/student-services-0.0.1-SNAPSHOT.jar /root/docker-space/'
-          }
-        }
-        stage('run sonar') {
-          steps {
-            sh '''cd /var/lib/jenkins/jobs/Mytest/branches/master/workspace 
-
-mvn clean install sonar:sonar'''
-          }
-        }
+      steps {
+        sh 'sudo cp /var/lib/jenkins/jobs/Mytest/branches/master/workspace/target/student-services-0.0.1-SNAPSHOT.jar /root/docker-space/'
       }
     }
     stage('build image and push to hub') {
