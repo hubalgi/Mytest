@@ -19,7 +19,10 @@ pipeline {
     }
     stage('Deploy into dev') {
       steps {
-        sh 'sudo sh /root/scripts/deploy_and_expose_ms.sh'
+        sh '''whoami
+
+sudo -i
+kubectl create -f /root/k8s-ymls/nginx-deployment-service.yaml'''
       }
     }
   }
