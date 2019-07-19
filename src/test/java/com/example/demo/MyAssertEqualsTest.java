@@ -1,4 +1,4 @@
-package java.com.example.demo;
+package bt.com.example.demo;
 
 	import org.junit.Test;
 	 
