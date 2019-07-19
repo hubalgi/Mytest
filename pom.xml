@@ -24,6 +24,21 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+	<properties>
+	<sonar.sources>src/main</sonar.sources>
+        <sonar.tests>src/test</sonar.tests>
+</properties>
+<properties>
+	<sonar.sources>src/main</sonar.sources>
+	<sonar.tests>src/test</sonar.tests>
+	<!-- Below property indicates the pattern of the test suite -->
+	<runSuite>**/*Suite.class</runSuite>
+	<!-- Sonar-JaCoCo properties -->
+	<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+	<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+	<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+	<sonar.language>java</sonar.language>
+</properties>
 
 	<dependencies>
 		<dependency>
@@ -69,61 +84,43 @@
 			<scope>test</scope>
 		</dependency> 
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<includes>
-						<include>${runSuite}</include>
-					</includes>
-				</configuration>
-			</plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+	<configuration>
+		<includes>
+			<include>${runSuite}</include>
+		</includes>
+	</configuration>
+</plugin>
 
-			<!– Sonar-JaCoCo integration plugin –>
-		<plugin>
-			<groupId>org.jacoco</groupId>
-			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>0.7.6.201602180812</version>
-			<configuration>
-				<destFile>${sonar.jacoco.reportPath}</destFile>
-				<append>true</append>
-			</configuration>
-			<executions>
-				<execution>
-					<id>agent</id>
-					<goals>
-						<goal>prepare-agent</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-	</plugins>
-</build>
+<!-- Sonar-JaCoCo integration plugin -->
+<plugin>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+	<version>0.7.6.201602180812</version>
+	<configuration>
+		<destFile>${sonar.jacoco.reportPath}</destFile>
+		<append>true</append>
+	</configuration>
+	<executions>
+		<execution>
+			<id>agent</id>
+			<goals>
+				<goal>prepare-agent</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+		</plugins>
+	</build>
 
-<properties>
-	<sonar.sources>src/main</sonar.sources>
-	<sonar.tests>src/test</sonar.tests>
-	<!– Below property indicates the pattern of the test suite –>
-<runSuite>**/*Suite.class</runSuite>
-<!– Below property indicates the pattern of the test class –>
-<runSuite>**/*Test.class</runSuite>
-<!– Sonar-JaCoCo properties –>
-<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
-<sonar.language>java</sonar.language>
-</properties>
-
-<!– Below plugin ensures the execution of test cases during maven build–>
-
-
-
-
+	
 </project>
