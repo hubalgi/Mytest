@@ -17,7 +17,7 @@ pipeline {
           steps {
             sh '''cd /var/lib/jenkins/jobs/Mytest/branches/master/workspace 
 
-mvn clean install sonar:sonar   -Dsonar.host.url=http://13.235.123.183:9000   -Dsonar.login=68d01057ee15c9e15f1a3e811e9f229fb4e64303'''
+clean install sonar:sonar'''
           }
         }
       }
