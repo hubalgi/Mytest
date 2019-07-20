@@ -19,7 +19,7 @@ pipeline {
     }
     stage('clear up existing deployments') {
       steps {
-        sh 'ssh root@172.31.0.13 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service.yaml\''
+        sh 'ssh root@172.31.0.13 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service.yaml || true\''
       }
     }
     stage('deploy into dev') {
