@@ -17,9 +17,14 @@ pipeline {
         sh 'sudo sh /root/scripts/startplaybook.sh'
       }
     }
-    stage('Deploy into dev') {
+    stage('clear up existing deployments') {
       steps {
-        sh 'kubectl create -f /root/k8s-ymls/nginx-deployment-service.yaml'
+        sh 'ssh root@172.31.0.13 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service.yaml\''
+      }
+    }
+    stage('deploy into dev') {
+      steps {
+        sh 'ssh root@172.31.0.13 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\''
       }
     }
   }
