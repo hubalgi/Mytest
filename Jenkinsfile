@@ -39,5 +39,10 @@ sleep 5m'''
         sh 'ssh root@172.31.0.13 \'kubectl create -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
       }
     }
+    post {
+        always {
+            junit '/opt/SmartBear/SoapUI-5.5.0/bin/reports/*.xml'
+        }
+    }
   }
 }
