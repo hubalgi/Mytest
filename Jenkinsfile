@@ -31,7 +31,7 @@ sleep 5m'''
     }
     stage('test') {
       steps {
-        sh 'sudo /root/scripts/runtestsuite.sh'
+        sh 'ssh root@172.31.0.13 \'/root/scripts/runtestsuite.sh\''
       }
     }
   }
