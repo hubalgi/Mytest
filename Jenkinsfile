@@ -29,12 +29,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'sudo /opt/SmartBear/SoapUI-5.5.0/bin/testrunner.sh -r -a -j -f /opt/SmartBear/SoapUI-5.5.0/bin/reports /root/soaptests/REST-Project-1-readyapi-project.xml'
-      }
-    }
-    stage('deploy to test') {
-      steps {
-        sh 'kubectl'
+        sh 'sudo /root/scripts/runtestsuite.sh'
       }
     }
   }
