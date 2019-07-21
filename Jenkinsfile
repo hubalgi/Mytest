@@ -47,7 +47,7 @@ sleep 3m'''
   }
   post {
     always {
-      junit '/opt/SmartBear/SoapUI-5.5.0/bin/reports/*.xml'
+      junit '/var/lib/jenkins/jobs/Mytest/branches/master/reports/*.xml'
 
     }
 
