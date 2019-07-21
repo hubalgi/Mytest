@@ -34,5 +34,10 @@ sleep 5m'''
         sh 'ssh root@172.31.0.13 \'/root/scripts/runtestsuite.sh\''
       }
     }
+    stage('deploy to test') {
+      steps {
+        sh 'ssh root@172.31.0.13 \'kubectl create -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
+      }
+    }
   }
 }
