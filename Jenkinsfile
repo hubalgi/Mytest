@@ -47,7 +47,7 @@ sleep 3m'''
   }
   post {
     always {
-      junit '/var/lib/jenkins/jobs/Mytest/branches/master/reports/*.xml'
+      junit 'sudo /var/lib/jenkins/jobs/Mytest/branches/master/reports/*.xml'
 
     }
 
