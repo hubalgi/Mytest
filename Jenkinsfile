@@ -24,7 +24,9 @@ pipeline {
     }
     stage('deploy into dev') {
       steps {
-        sh 'ssh root@172.31.0.13 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\''
+        sh '''ssh root@172.31.0.13 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
+
+sleep 5m'''
       }
     }
     stage('test') {
