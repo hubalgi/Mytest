@@ -98,7 +98,7 @@
 	</configuration>
 </plugin>
 
-<!-- Sonar-JaCoCo integration pluginadnv -->
+<!-- Sonar-JaCoCo integration pluginadnv n-->
 <plugin>
 	<groupId>org.jacoco</groupId>
 	<artifactId>jacoco-maven-plugin</artifactId>
