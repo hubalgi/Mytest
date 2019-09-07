@@ -7,7 +7,7 @@ pipeline {
           sh 'mvn clean install'
       }
     }
-    stage('copy the artifact to docker workspacne') {
+    stage('copy the artifact to docker workspacneb') {
       steps {
         sh 'sudo cp /var/lib/jenkins/jobs/Mytest/branches/master/workspace/target/student-services-0.0.1-SNAPSHOT.jar /root/docker-space/'
       }
