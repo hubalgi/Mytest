@@ -99,7 +99,7 @@
 	</configuration>
 </plugin>
 
-<!-- Sonar-JaCoCo integration pluginadnvmv vvvnn-->
+<!-- Sonar-JaCoCo integration pluginadnvmv vvvnnn-->
 <plugin>
 	<groupId>org.jacoco</groupId>
 	<artifactId>jacoco-maven-plugin</artifactId>
