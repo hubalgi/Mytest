@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout and build code and run code coverage') {
       steps {
-        sh 'mvn clean installn sonar:sonar'
+        sh 'mvn clean install sonar:sonar'
       }
     }
     stage('copy the artifact to docker workspacneb') {
