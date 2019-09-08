@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  parameters {
-  string(name: 'prev_stage_outcome', defaultValue: 'FAILURE')
- }
   stages {
     stage('checkout and build code and run code coverage') {
       steps {
@@ -29,17 +26,21 @@ pipeline {
       steps {
         sh '''ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
 
-sleep 3m'''
+sleep 5m'''
       }
     }
     stage('run regression test suite') {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-        sh 'ssh root@172.31.0.193 \'/root/scripts/runtestsuite.sh\''
+          sh 'ssh root@172.31.0.193 \'/root/scripts/runtestsuite.sh\''
           echo "Post-Build currentResult: ${currentBuild.currentResult}"
-	script {env.prev_stage_outcome = "SUCCESS"}
+          script {
+            env.prev_stage_outcome = "SUCCESS"
+          }
+
+        }
+
       }
-    }
     }
     stage('cleanup existing prod deployments') {
       steps {
@@ -51,5 +52,8 @@ sleep 3m'''
         sh 'ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
       }
     }
+  }
+  parameters {
+    string(name: 'prev_stage_outcome', defaultValue: 'FAILURE')
   }
 }
