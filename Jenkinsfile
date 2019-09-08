@@ -24,14 +24,14 @@ pipeline {
     }
     stage('deploy in test') {
       steps {
-        sh '''ssh root@172.31.0.13 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
+        sh '''ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
 
 sleep 3m'''
       }
     }
     stage('run regression test suite') {
       steps {
-        sh 'ssh root@172.31.0.13 \'/root/scripts/runtestsuite.sh\''
+        sh 'ssh root@172.31.0.193 \'/root/scripts/runtestsuite.sh\''
       }
     }
     stage('cleanup existing prod deployments') {
@@ -41,7 +41,7 @@ sleep 3m'''
     }
     stage('deploy in prod') {
       steps {
-        sh 'ssh root@172.31.0.13 \'kubectl create -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
+        sh 'ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
       }
     }
   }
