@@ -29,7 +29,7 @@
 	<sonar.tests>src/test</sonar.tests>
 	<!-- Below property indicates the pattern of the test suite. -->
 	<runSuite>**/*Suite.class</runSuite>
-	<!-- Sonar-JaCoCo properties -->
+	<!-- Sonar-JaCoCo properties v-->
 	<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 	<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 	<sonar.jacoco.reportPaths>/var/lib/jenkins/workspace/Mytest_master/target/jacoco.exec</sonar.jacoco.reportPaths>
