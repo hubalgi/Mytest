@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+  string(name: 'prev_stage_outcome', defaultValue: 'FAILURE')
+ }
   stages {
     stage('checkout and build code and run code coverage') {
       steps {
@@ -31,8 +34,12 @@ sleep 3m'''
     }
     stage('run regression test suite') {
       steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
         sh 'ssh root@172.31.0.193 \'/root/scripts/runtestsuite.sh\''
+          echo "Post-Build currentResult: ${currentBuild.currentResult}"
+	script {env.prev_stage_outcome = "SUCCESS"}
       }
+    }
     }
     stage('cleanup existing prod deployments') {
       steps {
