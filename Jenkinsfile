@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout and build code and run code coverage') {
       steps {
-        sh 'mvn clean install'
+        sh 'mvn clean installn sonar:sonar'
       }
     }
     stage('copy the artifact to docker workspacneb') {
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('clean up existing deployments') {
       steps {
-        sh 'ssh root@172.31.0.13 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service.yaml || true\''
+        sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service.yaml || true\''
       }
     }
     stage('deploy in test') {
@@ -36,7 +36,7 @@ sleep 3m'''
     }
     stage('cleanup existing prod deployments') {
       steps {
-        sh 'ssh root@172.31.0.13 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
+        sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
       }
     }
     stage('deploy in prod') {
