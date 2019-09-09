@@ -17,7 +17,7 @@ pipeline {
         sh 'sudo sh /root/scripts/startplaybook.sh'
       }
     }
-    stage('clean up existing deployments') {
+    stage('Backup deployments in test') {
       steps {
         sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service.yaml || true\''
       }
@@ -54,7 +54,7 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
 
           }
           steps {
-            sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml || true\''
+            sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service.yaml || true\''
           }
         }
         stage('Deployment into prod') {
@@ -65,6 +65,7 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
 
           }
           steps {
+            sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
             sh 'ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
           }
         }
