@@ -68,6 +68,7 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
 
 parameters {
     string(name: 'prev_stage_outcome', defaultValue: 'FAILURE')
-  }}
+  }
+  }
 }
 
