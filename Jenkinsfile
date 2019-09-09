@@ -46,11 +46,12 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
         stage ('Rollbacking the deployment') {
         when {
             expression { env.prev_stage_outcome == "FAILURE" }
+			}
         
       steps {
         sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml || true\''
       }
-    }
+    
 	}
     stage('Deployment into prod') {
       when {
