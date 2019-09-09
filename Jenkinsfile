@@ -25,13 +25,13 @@ pipeline {
     stage('deploy in test') {
       steps {
         sh '''ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
-ssh root@172.31.0.193 \' kubectl describe services ms|grep "LoadBalancer Ingress" | cut -d ":" -f 2| xargs >abc.txt\'
+ssh root@172.31.0.193 \' kubectl describe services ms|grep "LoadBalancer Ingress" | cut -d ":" -f 2| xargs >/root/abc.txt\'
 sleep 1m'''
       }
     }
     stage('run regression test suite') {
       steps {
-        sh 'ssh root@172.31.0.193 \'/root/scripts/runtestsuite.sh\''
+        sh 'sudo /opt/SmartBear/SoapUI-5.5.0/bin/testrunner.sh -h "`cat /root/abc.txt`" -r -a -j -f /var/lib/jenkins/jobs/Mytest/branches/master/reports /root/soaptests/REST-Project-1-readyapi-project.xml'
       }
     }
     stage('cleanup existing prod deployments') {
