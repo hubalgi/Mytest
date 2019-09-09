@@ -25,7 +25,6 @@ pipeline {
     stage('deploy in test') {
       steps {
         sh '''ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
-
 ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
 '''
       }
@@ -60,7 +59,10 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
       }
     }
   }
-  parameters {
+  
+}
+}
+parameters {
     string(name: 'prev_stage_outcome', defaultValue: 'FAILURE')
-  }
+  }}
 }
