@@ -26,7 +26,7 @@ pipeline {
       steps {
         sh '''ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
 
-sleep 3m'''
+sleep 1m'''
       }
     }
     stage('run regression test suite') {
