@@ -25,7 +25,7 @@ pipeline {
     stage('deploy in test') {
       steps {
         sh '''ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
-sleep 5m
+sleep 1m
 ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
 '''
       }
