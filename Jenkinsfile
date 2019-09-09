@@ -37,7 +37,7 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
     }
     stage('cleanup existing prod deployments') {
       steps {
-        sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml\''
+        sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml || true\''
       }
     }
     stage('deploy in prod') {
