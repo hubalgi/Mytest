@@ -25,8 +25,9 @@ pipeline {
     stage('deploy in test') {
       steps {
         sh '''ssh root@172.31.0.193 \'kubectl create -f /root/k8s-ymls/ms-deployment-service.yaml\'
-ssh root@172.31.0.193 \'kubectl describe services ms|grep "LoadBalancer Ingress" | cut -d ":" -f 2| xargs >/root/abc.txt\'
-sleep 1m'''
+sleep 5m
+ssh root@172.31.0.193 \'/root/scripts/runtestsuite.sh\'
+'''
       }
     }
     stage('run regression test suite') {
