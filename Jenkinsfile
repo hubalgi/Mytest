@@ -1,3 +1,5 @@
+
+  
 pipeline {
   agent any
   stages {
@@ -49,6 +51,7 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
         sh 'ssh root@172.31.0.193 \'kubectl delete -f /root/k8s-ymls/ms-deployment-service-test.yaml || true\''
       }
     }
+	}
     stage('Deployment into prod') {
       when {
             expression { env.prev_stage_outcome == "SUCCESS" }
@@ -61,8 +64,9 @@ ssh root@172.31.0.193 \'sudo sh /root/scripts/runtestsuite.sh\'
   }
   
 }
-}
+
 parameters {
     string(name: 'prev_stage_outcome', defaultValue: 'FAILURE')
   }}
 }
+
