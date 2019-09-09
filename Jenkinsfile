@@ -32,7 +32,9 @@ sleep 5m'''
     stage('run regression test suite') {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-          sh 'ssh root@172.31.0.193 \'/root/scripts/runtestsuite.sh\''
+          sh '''sudo kubectl describe services ms|grep "LoadBalancer Ingress" | cut -d ":" -f 2| xargs >>abc.txt
+echo "echo running test cases"
+sudo /opt/SmartBear/SoapUI-5.5.0/bin/testrunner.sh -h "`cat abc.txt`"  -r -a -j -f /var/lib/jenkins/jobs/Mytest/branches/master/reports /root/soaptests/REST-Project-1-readyapi-project.xml'''
           echo "Post-Build currentResult: ${currentBuild.currentResult}"
           script {
             env.prev_stage_outcome = "SUCCESS"
